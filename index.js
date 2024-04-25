@@ -13,9 +13,12 @@ const htmlServer = http.createServer((req, res) => {
             if (err) {
                 res.writeHead(500);
                 res.end('Error loading index.html');
+                console.log('Error loading index.html');
+                console.log(err);
             } else {
                 res.writeHead(200, { 'Content-Type': 'text/html' });
                 res.end(data);
+                console.log('Accepted a request without parameters');
             }
         });
     } else if (pathname === '/car.glb') {
@@ -23,9 +26,12 @@ const htmlServer = http.createServer((req, res) => {
             if (err) {
                 res.writeHead(500);
                 res.end('Error loading car.glb');
+                console.log('Error loading vehicle');
+                console.log(err);
             } else {
                 res.writeHead(200, { 'Content-Type': 'model/gltf-binary' });
                 res.end(data);
+                console.log('Accepted a request');
             }
         });
     } else {
@@ -35,11 +41,14 @@ const htmlServer = http.createServer((req, res) => {
             if (err) {
                 res.writeHead(500);
                 res.end('Error loading index.html');
+                console.log('Error loading and car not found');
+                console.log(err);
             } else {
                 const htmlContent = data.toString().replace('{{pathVariable}}', pathSegment);
 
                 res.writeHead(200, { 'Content-Type': 'text/html' });
                 res.end(htmlContent);
+                console.log('Accepted request and car not found');
             }
         });
     }
