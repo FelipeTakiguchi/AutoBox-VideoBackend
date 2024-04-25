@@ -47,9 +47,6 @@
             const loader = new THREE.GLTFLoader();
             loader.load('./car.glb', function (gltf) {
                 object = gltf.scene;
-                const axesHelper = new THREE.AxesHelper(2);
-                const axesHelper2 = new THREE.AxesHelper(2);
-                object.add(axesHelper);
                 scene.add(object);
                 animationStartTime = Date.now();
                 animate();
